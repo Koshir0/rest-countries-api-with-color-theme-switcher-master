@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;600;800&family=Outfit:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body{
+            background-color: hsl(207, 26%, 17%);
+            box-sizing: border-box;
+            margin: 0;
+            font-size: 16px;
+            color : hsl(0, 0%, 100%);
+            font-family: 'Nunito Sans', sans-serif;
+            
+/* font-family: 'Outfit', sans-serif; */
+        }
+        main, header{
+            width:80%; 
+            margin: 0 auto ;
+        }
+        main {
+            background-color: hsl(207, 26%, 17%);
+            /* background-color: hsl(0, 0%, 0%); */
+            /* margin:0 auto;*/
+            display: flex;
+            /* height: 50%; */
+            
+            /* justify-content: space-around; */
+            /* border: 3px solid red; */
+        }
+        header{
+            /* background-color: yellow; */
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+        
+      
+        nav{
+            background-color: hsl(209, 23%, 22%);
+            /* color: hsl(0, 0%, 100%); */
+            display: flex;
+
+            justify-content: space-between;
+        }
+        li{
+            list-style-type: none;
+            font-weight: 800;  
+            /* font-size: 14px;  */
+            padding:30px;        
+        }
+  
+     
+        
+      
+        p{
+            font-size: 16px;
+            font-weight: 300;
+            
+
+        }
+    
+        button{
+            background-color: hsl(209, 23%, 22%);
+            border:none;
+            border-radius: 3px;
+            padding: 8px 12px ;
+            width:100px;
+            box-shadow: 3px 2px rgb(29, 28, 28) ;
+        }
+        button a{
+           text-decoration: none;
+           color:hsl(0, 0%, 100%);
+           
+        }
+
+        @media screen and (max-width: 375px) {
+            
+            main{
+            display: block;
+            /* width:100% ; */
+            margin-bottom:20px ;
+            /* flex-direction: row; */
+            /* justify-content: row;  */
+            /* flex-wrap: wrap; */
+            /* justify-content: space-around; */
+            /* border: 3px solid red; */
+            /* background-color: hsl(208, 100%, 50%); */
+
+        }
+        nav{
+            background-color: hsl(209, 23%, 22%);
+            color: hsl(0, 0%, 100%);
+            /* display: block; */
+            /* flex-direction: row; */
+
+            /* justify-content: space-between; */
+        }
+        header{
+            margin: 33px;
+            /* height: 50px; */
+            /* background-color: blueviolet; */
+            /* display: block ; */
+            /* flex-direction: row; */
+
+            /* justify-content: space-between; */
+            height: 50px;
+        }
+        img{
+            /* display: block; */
+            width:100%;
+            /* padding-right: 15px;
+            padding-left: 15px; */
+
+        }
+       
+        .border{
+            display: block;
+        }
+        button{
+            display: inline;
+            /* background-color: blueviolet; */
+            margin:10px;
+            width: 30%;
+            /* flex-direction: column; */
+
+        }
+        a{
+            
+
+        }
+            }
+       
+    </style>
+</head>
+<body>
+    <nav>
+        <li>Where in the world?</li>
+        <li ><ion-icon name="moon-sharp" ></ion-icon>    Dark Mode</li>
+    </nav>
+
+
+    {%block body%}    
+   <header> <button ><a href="{{url_for('index')}}">back</a> </button></header>
+<main >
+    
+   
+       
+       
+   <img src="{{ flag}}" alt="{{flag}}">
+ 
+
+
+
+        <div>
+       
+            <h4>{{name}}</h4>
+           <p>Native Name: {{nativeName}}</p>
+            <p>Population: {{population}}</p>  
+           <p>Region: {{region}}</p>
+           <p>Sub Region: {{subregion}}</p>
+           <p>Capital: {{capital}}</p>
+           
+           
+        
+            
+                <p>Top Level Domain : {%for t in tld %} {{t}} {%endfor%}</p>
+        
+                <p>Currencies :  {%for c in currency %} {{c}} {%endfor%}</p>
+           <p>Languages  :  {%for l in langs %} {{l}}{%endfor %}</p>
+           
+           
+  
+    
+        <p class="border">Border Countries :  
+            
+            {%if border%}
+            
+            {%for b in border %} <button><a href="url_for(  '.details', name = {{b}}   )">{{b}}</a></button>  {%endfor%}
+            
+            {%else%}
+            Nah, There is no border here!
+       
+            {%endif%}
+          
+        </p>
+
+     
+    </div>
+   
+      
+   
+</main>
+
+
+    
+
+    {%endblock%}
+
+
+
+<script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+</body>
+</html>
